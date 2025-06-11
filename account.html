@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Home Page" />
+    <meta name="keywords" content="home, bakery" />
+    <meta name="author" content="Liew You Wee" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@3.1.11/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <title>Account Page</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top green z-3">
+          <div class="container px-3">
+            <a class="navbar-brand white fw-bold fs-2" href="index.html">
+              Bar
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasDarkNavbar"
+              aria-controls="offcanvasDarkNavbar"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="offcanvas offcanvas-end text-bg-dark"
+              tabindex="-1"
+              id="offcanvasDarkNavbar"
+              aria-labelledby="offcanvasDarkNavbarLabel"
+            >
+              <div class="offcanvas-header">
+                <h5
+                  class="offcanvas-title fw-bold white"
+                  id="offcanvasDarkNavbarLabel"
+                >
+                  Bar
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="container">
+                <div class="row offcanvas-body">
+                  <ul
+                    class="navbar-nav mb-lg-0 d-flex justify-content-center justify-content-md-start"
+                  >
+                    <li class="nav-item p-2 align-self-center">
+                      <a class="nav-link white fs-5 fw-bold" href="index.html"
+                        >Home</a
+                      >
+                    </li>
+                    <li class="nav-item p-2 align-self-center">
+                      <a class="nav-link white fs-5 fw-bold" href="product.html"
+                        >Product</a
+                      >
+                    </li>
+                    <li class="nav-item p-2 align-self-center ms-md-auto">
+                      <a class="nav-link" href="account.html">
+                        <img
+                          src="img/profile.png"
+                          alt="account"
+                          title="account"
+                          width="50"
+                          height="50"
+                        />
+                      </a>
+                    </li>
+                    <li class="nav-item p-2 align-self-center">
+                      <a class="nav-link" href="shopping_cart.html">
+                        <img
+                          src="img/cart.png"
+                          alt="shopping"
+                          title="shopping_cart"
+                          width="50"
+                          height="50"
+                        />
+                        <span
+                          class="position-absolute top-40 start-60 translate-middle badge rounded-pill text-bg-secondary"
+                          >{{ cart.length }}</span
+                        >
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <div>
+        <div v-if="!loggedIn" class="container">
+          <h1 class="text-white text-center">Don't have an account?</h1>
+          <div class="d-flex justify-content-center">
+            <div class="mt-3">
+              <a href="login.html" class="btn btn-primary mx-2">Log In</a>
+              <a href="register.html" class="btn btn-success mx-2">Register</a>
+            </div>
+          </div>
+        </div>
+
+        <div v-else>
+          <div class="container">
+            <h1 class="text-white fw-bold fs-1 roboto-flex-regular">
+              My Account
+            </h1>
+          </div>
+
+          <section>
+            <div class="orange pt-3 pb-5">
+              <div class="container mt-5">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <img
+                      class="bg-white rounded-circle pointer"
+                      width="150"
+                      height="150"
+                      :src="user?.img ? 'uploads/' + user.img : 'img/default.png'"
+                      @click="fileInput.click()"
+                    />
+                    <input
+                      type="file"
+                      ref="fileInput"
+                      @change="handleFileUpload"
+                      accept="image/*"
+                      class="d_none"
+                    />
+                  </div>
+
+                  <div class="col">
+                    <div>
+                      <p
+                        class="mochiy-pop-one-regular text-white fs-3 mb-0 text-start"
+                      >
+                        {{ user?.name }}
+                      </p>
+                      <hr class="text-white mt-2" />
+                      <a href="purchase.html"
+                        ><p
+                          class="mochiy-pop-one-regular text-white fs-3 mb-0 text-end"
+                        >
+                          Purchase Order >>
+                        </p></a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <br /><br /><br /><br /><br />
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="position-relative top--50">
+                <div class="rounded-5 shadow-white bg-black p-3">
+                  <div class="row p-2">
+                    <h1 class="mochiy-pop-one-regular text-white fs-4 col">
+                      Personal Information
+                    </h1>
+                    <div class="col text-end">
+                      <img
+                        src="img/edit.png"
+                        alt="edit"
+                        width="30"
+                        height="30"
+                        @click="editMode = !editMode"
+                        class="pointer"
+                      />
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div class="row pb-2">
+                      <p class="mochiy-pop-one-regular text-white col">
+                        Full Name
+                      </p>
+                      <p
+                        class="mochiy-pop-one-regular text-white col text-end"
+                        v-if="!editMode"
+                      >
+                        {{ user?.name }}
+                      </p>
+                      <input v-else v-model="user.name" class="form-control" />
+                    </div>
+                    <div class="row pb-2">
+                      <p class="mochiy-pop-one-regular text-white col">
+                        Gender
+                      </p>
+                      <p
+                        class="mochiy-pop-one-regular text-white col text-end"
+                        v-if="!editMode"
+                      >
+                        {{ user?.gender || 'N/A' }}
+                      </p>
+                      <select v-else v-model="user.gender" class="form-control">
+                        <option value="">Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                      </select>
+                    </div>
+                    <div class="row pb-2">
+                      <p class="mochiy-pop-one-regular text-white col">DOB</p>
+                      <p
+                        class="mochiy-pop-one-regular text-white col text-end"
+                        v-if="!editMode"
+                      >
+                        {{ user?.DOB || 'N/A' }}
+                      </p>
+                      <input
+                        v-else
+                        type="date"
+                        v-model="user.DOB"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="row pb-2">
+                      <p class="mochiy-pop-one-regular text-white col">
+                        Mobile No.
+                      </p>
+                      <p
+                        class="mochiy-pop-one-regular text-white col text-end"
+                        v-if="!editMode"
+                      >
+                        {{ user?.phone || 'N/A' }}
+                      </p>
+                      <input v-else v-model="user.phone" class="form-control" />
+                    </div>
+                    <div class="row pb-2">
+                      <p class="mochiy-pop-one-regular text-white col">Email</p>
+                      <p class="mochiy-pop-one-regular text-white col text-end">
+                        {{ user?.email }}
+                      </p>
+                    </div>
+                    <div class="row pb-2">
+                      <p class="mochiy-pop-one-regular text-white col">
+                        Address
+                      </p>
+                      <p
+                        class="mochiy-pop-one-regular text-white col text-end"
+                        v-if="!editMode"
+                      >
+                        {{ user?.address || 'N/A' }}
+                      </p>
+                      <input
+                        v-else
+                        v-model="user.address"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="row pb-2">
+                      <p class="mochiy-pop-one-regular text-white col">
+                        Password
+                      </p>
+                      <p class="mochiy-pop-one-regular text-white col text-end">
+                        ********
+                      </p>
+                    </div>
+
+                    <div class="text-end mt-3" v-if="editMode">
+                      <button
+                        @click="updateUser"
+                        class="orange btn mochiy-pop-one-regular text-white"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button
+                    @click="logout"
+                    class="btn orange float-end mt-3 mochiy-pop-one-regular text-white"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vuejs-paginate-next@latest/dist/vuejs-paginate-next.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.1.11/dist/vuetify.min.js"></script>
+
+    <script src="js/account.js"></script>
+  </body>
+</html>

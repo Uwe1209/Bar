@@ -1,0 +1,190 @@
+section{
+  margin-bottom: 100px;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+.green{
+  background-color: #0000001b;
+}
+.white{
+  color: #ffffff;
+}
+.white-1{
+  background-color: white;
+}
+.brown-1{
+  background-color: #302623;
+}
+.brown-2{
+  background-color: #4A3D33;
+}
+.orange{
+  background-color: #d1510a;
+}
+body{
+  background-color: #000000;
+}
+footer{
+  background-color: #ffffff;
+}
+.pointer{
+  cursor: pointer;
+}
+p{
+  margin: auto;
+  padding: auto;
+}
+.mochiy-pop-one-regular {
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
+}
+.roboto-flex-regular {
+  font-family: "Roboto Flex", sans-serif;
+  font-style: normal;
+}
+.inner-box{
+  box-shadow: inset 0 0 550px 120px rgb(0, 0, 0);
+}
+.top--100{
+  top:-50%;
+}
+.top--50{
+  top:-100px;
+}
+.top--10{
+  top:-27px;
+}
+.top-10{
+  top: 10%;
+}
+.top-30{
+  top: 30%;
+}
+.top-60{
+  top: 60%;
+}
+.top-70{
+  top: 70%;
+}
+.top-80{
+  top: 80%;
+}
+.start--10{
+  left: -10%;
+}
+.start-20{
+  left: 20%;
+}
+.start-70{
+  left: 70%;
+}
+.start-80{
+  left: 80%;
+}
+.rotate-30 {
+  transform: rotate(-50deg);
+}
+.s-1{
+  height: 100vh;
+}
+
+.r-2{
+  transform: rotate(-2deg);
+}
+.r-4{
+  transform: rotate(2deg);
+}
+
+.r-5{
+  transform: translateX(-50%);
+}
+
+.d_none{
+  display: none;
+}
+
+
+.shadow-white{
+  box-shadow: 0px 0px 30px 0px #ffffff5e;
+}
+
+.pagination li.active-page {
+  background: orange;
+  color: white;
+}
+
+.text-warning {
+  color: orange !important;
+}
+
+.l1{
+  height: 730px;
+  background: linear-gradient(120deg, #f5e7ba, #482d05);
+}
+
+.l2{
+  height: 730px;
+  background: linear-gradient(120deg, #482d05,#f5e7ba);
+}
+
+.shadow-custom {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login1{
+  width: 50%;
+}
+.object-cover{
+  object-fit: cover;
+}
+
+.text-red{
+  color: red;
+}
+
+.input-l{
+  width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background-color: white;
+    height: 45px;
+}
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); 
+  }
+}
+
+@media (max-width: 550px){
+  .r-5{
+    transform: translateX(-80%);
+  }
+}
+
+@media (max-width: 440px){
+  .flex-d{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .shadow-custom {
+    flex-direction: column-reverse;
+  }
+  .none-1{
+    display: none;
+  }
+  .login1{
+    width: 100%;
+  }
+}
