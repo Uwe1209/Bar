@@ -149,84 +149,36 @@
         </div>
       </section>
 
-      <section
-        v-for="(product, index) in paginatedProducts"
-        :key="product.code + index"
-      >
-        <div class="container">
-          <div
-            class="row align-items-center"
-            :class="index % 2 === 0 ? 'justify-content-md-start' : 'justify-content-md-end'"
-          >
-            <div
-              class="col-lg-8 d-flex align-items-center"
-              :class="index % 2 !== 0 ? 'justify-content-end' : ''"
-            >
-              <template v-if="index % 2 === 0">
-                <div
-                  class="orange position-relative z-0"
-                  style="height: 150px; min-width: 40%"
-                >
-                  <img
-                    :src="product.productImage"
-                    :alt="product.productName"
-                    class="top--100 position-absolute"
-                    height="300px"
-                  />
-                </div>
-                <div
-                  class="bg-white text-center p-3 rounded-5 z-2 position-relative px-5 py-4"
-                  style="margin-left: -50px"
-                >
-                  <p class="mochiy-pop-one-regular fs-5 mb-2">
-                    {{ product.productName }}
-                  </p>
-                  <p class="mochiy-pop-one-regular fs-5 mb-3">
-                    {{ product.price }}
-                  </p>
-                  <button
-                    class="btn fw-bold rounded-pill px-4 orange text-white"
-                    @click="addToCart(product)"
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </template>
+      <div class="container">
+  <div class="row">
+    <section class="col-lg-6" v-for="(product, index) in paginatedProducts" :key="product.code + index">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="d-flex align-items-center" :class="index % 2 === 0 ? '' : 'flex-row-reverse'">
 
-              <template v-else>
-                <div
-                  class="bg-white text-center p-3 rounded-5 z-2 position-relative px-5 py-4"
-                  style="margin-right: -50px"
-                >
-                  <p class="mochiy-pop-one-regular fs-5 mb-2">
-                    {{ product.productName }}
-                  </p>
-                  <p class="mochiy-pop-one-regular fs-5 mb-3">
-                    {{ product.price }}
-                  </p>
-                  <button
-                    class="btn fw-bold rounded-pill px-4 orange text-white"
-                    @click="addToCart(product)"
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-                <div
-                  class="orange position-relative z-0"
-                  style="height: 150px; min-width: 40%"
-                >
-                  <img
-                    :src="product.productImage"
-                    :alt="product.productName"
-                    class="top--100 position-absolute start-50 r-5"
-                    height="300px"
-                  />
-                </div>
-              </template>
+            <div class="orange position-relative mx-auto w-50" style="height: 150px; overflow: visible;">
+              <img :src="product.productImage" :alt="product.productName"
+                   class="position-absolute start-50 top--100 translate-middle-x"
+                   height="300px" />
             </div>
+
+            <div :class="['w-50', 'orange', index % 2 === 0 ? 'rounded-end-5' : 'rounded-start-5']">
+              <div class="bg-white text-center rounded-5 z-2 position-relative px-5 py-4">
+                <p class="mochiy-pop-one-regular fs-5 mb-2">{{ product.productName }}</p>
+                <p class="mochiy-pop-one-regular fs-5 mb-3">{{ product.price }}</p>
+                <button class="btn fw-bold rounded-pill px-4 orange text-white" @click="addToCart(product)">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  </div>
+</div>
+
 
       <section v-if="filteredProducts.length === 0">
         <div class="container text-center text-white my-5">
