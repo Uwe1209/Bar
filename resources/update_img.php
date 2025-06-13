@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-$conn = new mysqli('localhost', 'root', '', 'bar');
+$conn = new mysqli('localhost', 'root', '', 'Bar1');
 if ($conn->connect_error) {
     echo json_encode(['success' => false, 'message' => 'DB connection failed']);
     exit;
