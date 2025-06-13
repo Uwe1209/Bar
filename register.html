@@ -23,7 +23,7 @@
       href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
       rel="stylesheet"
     />
-    <title>Login Page</title>
+    <title>Register Page</title>
   </head>
   <body class="l2 d-flex align-items-center justify-content-center">
     <div id="app">
@@ -43,7 +43,7 @@
             <span class="roboto-flex-regular fw-bold py-2"
               >For a Big Suprise</span
             >
-            <form class="d-flex gap-1 flex-column">
+            <form class="d-flex gap-1 flex-column" @submit.prevent="register">
               <div class="w-100">
                 <label
                   class="roboto-flex-regular text-black fs-5 form-label fw-bold d-block"
@@ -94,7 +94,7 @@
               </div>
               <div>
                 <button
-                  @click="register"
+                  type="submit"
                   class="mochiy-pop-one-regular text-white orange py-2 w-100 rounded-2 border-0"
                 >
                   Register
@@ -119,5 +119,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vuetify@3.1.11/dist/vuetify.min.js"></script>
 
     <script src="js/register.js"></script>
+
   </body>
 </html>
