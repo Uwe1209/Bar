@@ -32,10 +32,22 @@ $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, 
 $stmt->bind_param("sss", $name, $email, $hashed);
 
 if ($stmt->execute()) {
-    echo json_encode(['success' => true, 'message' => 'Registration successful!']);
+    echo json_encode([
+        'success' => true,
+        'message' => 'Registration successful!',
+        'debug' => [
+            'email' => $email,
+            'name' => $name,
+            'hashed_password' => $hashed
+        ]
+    ]);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Error occurred: ' . $conn->error]);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error occurred: ' . $stmt->error
+    ]);
 }
+
 
 $stmt->close();
 $conn->close();
