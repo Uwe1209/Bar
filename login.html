@@ -36,7 +36,7 @@
             <span class="roboto-flex-regular fw-bold py-2"
               >Ready for Big Suprise?</span
             >
-            <form class="d-flex gap-3 flex-column">
+            <form class="d-flex gap-3 flex-column" @submit.prevent="login">
               <div class="w-100">
                 <label
                   class="roboto-flex-regular text-black fs-5 form-label fw-bold d-block"
@@ -63,7 +63,7 @@
               </div>
               <div>
                 <button
-                  @click="login"
+                  type="submit"
                   class="mochiy-pop-one-regular text-white orange py-2 w-100 rounded-2 border-0"
                 >
                   Login
